@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { Menu, Input, Row, Col } from "antd";
@@ -7,6 +7,8 @@ import {
   ProfileOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
+import UserProfile from "./UserProfile";
+import LoginForm from "./LoginForm";
 
 function getItem(label, key, icon, type) {
   return {
@@ -47,12 +49,13 @@ const items = [
 ];
 
 const AppLayout = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
       <Menu mode="horizontal" items={items} />
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          왼쪽 메뉴
+          {isLoggedIn ? <UserProfile /> : <LoginForm />}
         </Col>
         <Col xs={24} md={12}>
           {children}
