@@ -9,7 +9,11 @@ import {
 } from "@ant-design/icons";
 import UserProfile from "./UserProfile";
 import LoginForm from "./LoginForm";
+import styled from "styled-components";
 
+const SearchInput = styled(Input.Search)`
+  vertical-align: middle;
+`;
 function getItem(label, key, icon, type) {
   return {
     key,
@@ -34,11 +38,7 @@ const items = [
     "sub2",
     <ProfileOutlined />
   ),
-  getItem(
-    <Input.Search enterButton style={{ verticalAlign: "middle" }} />,
-    "sub3",
-    null
-  ),
+  getItem(<SearchInput />, "sub3", null),
   getItem(
     <Link href="/signup">
       <a>Signup</a>
@@ -55,7 +55,11 @@ const AppLayout = ({ children }) => {
       <Menu mode="horizontal" items={items} />
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {isLoggedIn ? <UserProfile /> : <LoginForm />}
+          {isLoggedIn ? (
+            <UserProfile setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <LoginForm setIsLoggedIn={setIsLoggedIn} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}
