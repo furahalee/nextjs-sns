@@ -1,7 +1,8 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import Head from "next/head";
-("");
+import wrapper from "../store/configureStore";
+
 //공통메뉴를 넣음
 const App = ({ Component }) => {
   return (
@@ -18,4 +19,4 @@ App.prototypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default App;
+export default wrapper.withRedux(App);
