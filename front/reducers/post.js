@@ -4,7 +4,7 @@ export const initialState = {
       id: 1,
       User: {
         id: 1,
-        nichname: "푸라하",
+        nickname: "푸라하",
       },
       content: "첫 번째 게시글",
       Images: [{
